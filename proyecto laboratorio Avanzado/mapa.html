@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa GPS Pro</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<link rel="stylesheet" href="estilos.css">
+
+
+</head>
+
+<body>
+<div class="header">
+<span class="menu-btn" onclick="toggleMenu()">☰</span>
+🌎 Mapa Ambiental
+</div>
+
+
+<div class="sidebar" id="sidebar">
+<a href="perfil.html">
+    <button>👤 Perfil</button>
+</a>
+<a href="logros.html">
+    <button>🏅 Logros</button>
+</a>
+<a href="reportes.html">
+    <button>📋 Reportes</button>
+</a>
+<a href="carro.html">
+    <button>🚛 Camion de basudero</button>
+</a>
+<button onclick="toggleMenu()">❌ Cerrar</button>
+</div>
+
+
+<div id="map"></div>
+
+<div class="panel">
+<h3>📹 Videos recomendados</h3>
+<div class="videos">
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/B7xgY1xYJ1o"></iframe>
+</div>
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/l4dPZfHk6bY"></iframe>
+</div>
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/l4dPZfHk6bY"></iframe>
+
+</div>
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/l4dPZfHk6bY"></iframe>
+</div>
+
+<!-- BOTONES CON ICONOS -->
+<button id="activarBtn" class="icon-btn" onclick="activarUbicacion()">📡</button>
+<button id="detenerBtn" class="icon-btn" onclick="detenerUbicacion()">🛑</button>
+<button class="report-btn" onclick="document.getElementById('cameraInput').click()">📸</button>
+<input type="file" id="cameraInput" accept="image/*" capture="environment">
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script src="java.js"></script>
+</body>
+</html>
+

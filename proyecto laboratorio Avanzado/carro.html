@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Ruta Eco</title>
+
+<style>
+
+/* ====== ESTILO GENERAL ====== */
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background:linear-gradient(180deg,#a8e6a1,#e6f7e6);
+    display:flex;
+    justify-content:center;
+    padding:20px;
+}
+
+/* CONTENEDOR APP */
+.app{
+    width:360px;
+}
+
+/* ====== TARJETA PRINCIPAL ====== */
+.card-top{
+    background:linear-gradient(135deg,#4caf50,#00bfa5);
+    border-radius:20px;
+    padding:20px;
+    color:white;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card-top h2{
+    margin:0 0 15px 0;
+    font-size:22px;
+}
+
+/* INPUT */
+.select-box{
+    background:rgb(94, 94, 94);
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:14px;
+}
+
+.btn-gps{
+    background:#2ecc71;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+    width:100%;
+    font-weight:bold;
+}
+
+/* ====== TARJETA RUTA ====== */
+/* ===== BARRA RUTA ECO ===== */
+
+.ruta-track{
+    margin-top:20px;
+    background:linear-gradient(135deg,#43a047,#66bb6a);
+    border-radius:20px;
+    padding:15px;
+    color:white;
+    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+    position:relative;
+    overflow:hidden;
+}
+
+/* decoraciones estrellas */
+.ruta-track::before{
+    content:"✨ ✨ ⭐ ✨";
+    position:absolute;
+    top:5px;
+    left:20px;
+    font-size:14px;
+    opacity:0.4;
+}
+
+.ruta-left{
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+/* línea progreso */
+.progress-line{
+    width:100%;
+    height:8px;
+    background:rgba(255,255,255,0.3);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:60%;
+    height:100%;
+    background:white;
+    border-radius:20px;
+    animation: mover 2s ease-in-out infinite alternate;
+}
+
+@keyframes mover{
+    from{ width:50%; }
+    to{ width:70%; }
+}
+
+.ruta-times{
+    display:flex;
+    justify-content:space-between;
+    margin-top:8px;
+    font-size:12px;
+}
+
+/* ====== ALERTAS ====== */
+.card-alertas{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    margin-top:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.alerta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+    font-size:14px;
+}
+
+.switch{
+    width:40px;
+    height:20px;
+    background:#ccc;
+    border-radius:20px;
+    position:relative;
+    cursor:pointer;
+}
+
+.switch::after{
+    content:'';
+    width:16px;
+    height:16px;
+    background:white;
+    position:absolute;
+    top:2px;
+    left:2px;
+    border-radius:50%;
+    transition:0.3s;
+}
+
+.switch.active{
+    background:#2ecc71;
+}
+
+.switch.active::after{
+    left:22px;
+}
+
+/* BOTON REPORTAR */
+.btn-reportar{
+    background:#ff5252;
+    border:none;
+    padding:15px;
+    border-radius:15px;
+    width:100%;
+    color:white;
+    font-size:16px;
+    margin-top:15px;
+    cursor:pointer;
+}
+.btn-back{
+    position:absolute;
+    top:20px;
+    left:20px;
+    background:white;
+    color:#2e7d32;
+    border:none;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+    cursor:pointer;
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:0.3s;
+    z-index:1000;
+}
+
+.btn-back:hover{
+    transform:scale(1.1);
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="app">
+    <button class="btn-back" onclick="window.location.href='mapa.html'">←</button>
+
+
+    <!-- TARJETA PRINCIPAL -->
+    <div class="card-top">
+        <h2>🚛 Mi Ruta Eco</h2>
+
+        <div class="select-box">
+            <span>Selecciona tu Urbanización</span>
+            📍
+        </div>
+
+        <button class="btn-gps">📡 Vincular con GPS</button>
+    </div>
+
+    <!-- TARJETA RUTA -->
+    <!-- BARRA RUTA ANIMADA -->
+<div class="ruta-track">
+
+    <div class="ruta-left">
+        ♻️ Faltan <strong>2 horas</strong>
+    </div>
+
+    <div class="ruta-center">
+        🚛
+        <div class="progress-line">
+            <div class="progress-fill"></div>
+        </div>
+        
+        <div class="ruta-times">
+            <span>🕢 7:30 AM</span>
+            <span>🏠 Paso del camión: 8:00 AM</span>
+        </div>
+    </div>
+
+</div>
+
+
+    <!-- ALERTAS -->
+    <div class="card-alertas">
+        <h3>🔔 Alertas</h3>
+
+        <div class="alerta">
+            <span>Recojo mañana</span>
+            <div class="switch" onclick="toggleSwitch(this)"></div>
+        </div>
+
+        <div class="alerta">
+            <span>Zona crítica</span>
+            <div class="switch active" onclick="toggleSwitch(this)"></div>
+        </div>
+
+        <button class="btn-reportar">⚠️ Reportar Retraso</button>
+    </div>
+
+</div>
+
+<script>
+function toggleSwitch(element){
+    element.classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

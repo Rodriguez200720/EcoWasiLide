@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil Ambiental</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(to bottom,#e8f5e9,#ffffff);
+}
+
+/* HEADER */
+.header{
+    background:#1b5e20;
+    color:white;
+    padding:15px;
+    text-align:center;
+    font-size:20px;
+    position:relative;
+}
+
+.btn-back{
+    position:absolute;
+    left:15px;
+    top:12px;
+    background:white;
+    border:none;
+    padding:6px 10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* PERFIL */
+.perfil{
+    text-align:center;
+    padding:25px;
+}
+
+.perfil img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:4px solid #2e7d32;
+    object-fit:cover;
+    cursor:pointer;
+}
+
+input[type="file"]{
+    display:none;
+}
+
+.nombre{
+    font-size:20px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+/* BARRA PROGRESO */
+.progress-container{
+    width:80%;
+    margin:15px auto;
+    background:#c8e6c9;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:20px;
+    width:0%;
+    background:#2e7d32;
+    transition:0.5s;
+}
+
+/* TARJETAS */
+.card{
+    background:white;
+    margin:15px;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+button{
+    padding:10px 14px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin:5px;
+    font-weight:bold;
+}
+
+.btn-report{background:#2e7d32;color:white;}
+.btn-reciclar{background:#1565c0;color:white;}
+.btn-limpieza{background:#ef6c00;color:white;}
+
+/* MEDALLAS */
+.medallas{
+    font-size:30px;
+    margin-top:10px;
+}
+
+/* RANKING */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:8px;
+    text-align:center;
+}
+
+th{
+    background:#1b5e20;
+    color:white;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+<button onclick="window.location.href='mapa.html'" class="btn-back">⬅</button>
+🌎 Mi Impacto Ambiental
+</div>
+
+<div class="perfil">
+<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="fotoPerfil">
+<input type="file" id="subirFoto" accept="image/*">
+<div class="nombre">Jefray</div>
+<div id="nivel">🌱 Bronze II</div>
+</div>
+
+<div class="progress-container">
+<div class="progress-bar" id="barra"></div>
+
+</div>
+
+<div class="card">
+<h3>📊 Actividades</h3>
+<p>🚨 Reportes: <span id="reportes">5</span></p>
+<p>♻️ Reciclaje (kg): <span id="reciclaje">0</span></p>
+<p>🧹 Jornadas limpieza: <span id="limpieza">0</span></p>
+
+<button class="btn-reciclar" onclick="sumarReciclaje()">+ Reciclaje</button>
+<button class="btn-limpieza" onclick="sumarLimpieza()">+ Limpieza</button>
+</div>
+
+<div class="card">
+<h3>🏅 Medallas</h3>
+<div class="medallas" id="medallas">🔒</div>
+</div>
+
+<div class="card">
+<h3>🏆 Ranking Comunitario</h3>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Puntos</th>
+<th>Rango</th>
+</tr>
+</thead>
+<tbody id="ranking"></tbody>
+</table>
+</div>
+
+<script>
+
+let reportes=0;
+let reciclaje=0;
+let limpieza=0;
+let puntos=0;
+
+/* FOTO PERFIL */
+document.getElementById("fotoPerfil").onclick=function(){
+document.getElementById("subirFoto").click();
+};
+
+document.getElementById("subirFoto").addEventListener("change",function(e){
+const reader=new FileReader();
+reader.onload=function(){
+document.getElementById("fotoPerfil").src=reader.result;
+}
+reader.readAsDataURL(e.target.files[0]);
+});
+
+/* FUNCIONES */
+function actualizar(){
+
+document.getElementById("reportes").innerText=reportes;
+document.getElementById("reciclaje").innerText=reciclaje;
+document.getElementById("limpieza").innerText=limpieza;
+
+let nivel="🌱 Bronze I";
+if(puntos>=50) nivel="🌿 Bronze II";
+if(puntos>=120) nivel="♻️ Guardián Ambiental";
+if(puntos>=250) nivel="🌎 Héroe Ambiental";
+
+document.getElementById("nivel").innerText=nivel;
+
+let progreso=(puntos/250)*100;
+if(progreso>100) progreso=100;
+
+document.getElementById("barra").style.width=progreso+"%";
+
+/* MEDALLAS */
+let medallas="";
+
+if(reportes>=5) medallas+="🚨";
+if(reciclaje>=20) medallas+="♻️";
+if(limpieza>=3) medallas+="🧹";
+if(medallas==="") medallas="🔒";
+
+document.getElementById("medallas").innerText=medallas;
+
+actualizarRanking();
+}
+
+function sumarReporte(){
+reportes++;
+puntos+=10;
+actualizar();
+}
+
+function sumarReciclaje(){
+reciclaje+=5;
+puntos+=5;
+actualizar();
+}
+
+function sumarLimpieza(){
+limpieza++;
+puntos+=20;
+actualizar();
+}
+
+function actualizarRanking(){
+
+let personas=[
+{nombre:"Jefray",puntos:puntos},
+{nombre:"Ana",puntos:90},
+{nombre:"Luis",puntos:180},
+{nombre:"María",puntos:40}
+];
+
+personas.sort((a,b)=>b.puntos-a.puntos);
+
+let tabla="";
+
+personas.forEach(p=>{
+let rango="🌱";
+if(p.puntos>=50) rango="🌿";
+if(p.puntos>=120) rango="♻️";
+if(p.puntos>=250) rango="🌎";
+
+tabla+=`
+<tr>
+<td>${p.nombre}</td>
+<td>${p.puntos}</td>
+<td>${rango}</td>
+</tr>
+`;
+});
+
+document.getElementById("ranking").innerHTML=tabla;
+
+}
+
+actualizar();
+
+</script>
+
+</body>
+</html>

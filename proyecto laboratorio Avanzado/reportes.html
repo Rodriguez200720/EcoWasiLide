@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reportes - EcoGuardianes</title>
+<link rel="stylesheet" href="estilos.css">
+
+<style>
+
+:root{
+    --color-principal:#2f3e9e;
+    --color-fondo:#f4f6fb;
+    --color-card:#ffffff;
+    --pendiente:#e53935;
+    --proceso:#fbc02d;
+    --resuelto:#43a047;
+}
+
+/* HEADER */
+.header{
+    background:var(--color-principal);
+    color:white;
+    padding:15px;
+    text-align:center;
+    font-weight:bold;
+    position:relative;
+}
+
+/* BOTON REGRESAR */
+.btn-back{
+    position:absolute;
+    left:15px;
+    top:10px;
+    background:white;
+    border:none;
+    padding:6px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-back:hover{
+    background:#ddd;
+}
+
+/* GRID REPORTES */
+.reportes{
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+.card{
+    background:var(--color-card);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card-content h3{
+    margin-bottom:8px;
+}
+
+.card-content p{
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+.status{
+    margin-top:10px;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+    color:white;
+    display:inline-block;
+}
+
+.pendiente{ background:var(--pendiente); }
+.proceso{ background:var(--proceso); color:black; }
+.resuelto{ background:var(--resuelto); }
+
+/* BOTON NUEVO REPORTE */
+.add-report{
+    text-align:center;
+    padding:20px;
+}
+
+.add-report button{
+    padding:12px 20px;
+    border:none;
+    border-radius:8px;
+    background:var(--color-principal);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.add-report button:hover{
+    background:#1f2b75;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <button onclick="window.location.href='mapa.html'" class="btn-back">⬅</button>
+        REPORTES COMUNITARIOS
+    </div>
+
+    <div class="reportes">
+
+        <!-- REPORTE 1 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1604187351574-c75ca79f5807" alt="Basura acumulada">
+            <div class="card-content">
+                <h3>Basura acumulada</h3>
+                <p><strong>Ubicación:</strong> Av. Cusco - San Sebastián</p>
+                <p><strong>Fecha:</strong> 10/02/2026</p>
+                <p>Se detectó acumulación de residuos en la vía pública.</p>
+                <span class="status pendiente">Pendiente</span>
+            </div>
+        </div>
+
+        <!-- REPORTE 2 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952" alt="Contenedor lleno">
+            <div class="card-content">
+                <h3>Contenedor lleno</h3>
+                <p><strong>Ubicación:</strong> Jr. Los Pinos</p>
+                <p><strong>Fecha:</strong> 08/02/2026</p>
+                <p>El contenedor está completamente lleno y necesita recolección.</p>
+                <span class="status proceso">En proceso</span>
+            </div>
+        </div>
+
+        <!-- REPORTE 3 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46" alt="Zona limpia">
+            <div class="card-content">
+                <h3>Zona recuperada</h3>
+                <p><strong>Ubicación:</strong> Parque Central</p>
+                <p><strong>Fecha:</strong> 05/02/2026</p>
+                <p>Área limpiada exitosamente por el equipo comunitario.</p>
+                <span class="status resuelto">Resuelto</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="add-report">
+        <button>+ Crear Nuevo Reporte</button>
+    </div>
+
+</div>
+
+</body>
+</html>

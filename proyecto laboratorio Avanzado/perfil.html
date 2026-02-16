@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil Ambiental</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+}
+
+.perfil-container{
+    max-width:900px;
+    margin:40px auto;
+    background: rgba(0,0,0,0.6);
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 0 30px rgba(0,255,150,0.4);
+}
+
+/* CABECERA */
+.perfil-header{
+    text-align:center;
+}
+
+.perfil-header img{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    border:4px solid #00ff99;
+    margin-bottom:15px;
+}
+
+.perfil-header h2{
+    margin:5px 0;
+    color:#00ff99;
+}
+
+.perfil-header p{
+    color:#ccc;
+}
+
+.section{
+    margin-top:30px;
+}
+
+.section h3{
+    border-bottom:2px solid #00ff99;
+    padding-bottom:5px;
+}
+
+.card{
+    background: rgba(255,255,255,0.08);
+    padding:15px;
+    border-radius:12px;
+    margin-top:10px;
+}
+
+ul{
+    list-style:none;
+    padding:0;
+}
+
+ul li{
+    background: rgba(0,255,150,0.1);
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:8px;
+}
+
+.nivel{
+    margin-top:10px;
+}
+
+.barra{
+    width:100%;
+    height:15px;
+    background:#444;
+    border-radius:10px;
+}
+
+.progreso{
+    width:75%;
+    height:100%;
+    background:#00ff99;
+    border-radius:10px;
+}
+.btn-regresar{
+    background:#2f3e9e;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn-regresar:hover{
+    background:#1f2b75;
+    transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="perfil-container">
+    
+<button onclick="window.location.href='mapa.html'" class="btn-regresar">
+    ⬅ 
+</button>
+
+    <!-- CABECERA -->
+    <div class="perfil-header">
+        
+        <img src="https://i.pravatar.cc/150?img=12">
+        <h2>Jefray Torres</h2>
+        <p>🌎 Ciudadano Ambiental Activo</p>
+        <p>🥈bronze II</p>
+    </div>
+
+    <!-- INFORMACIÓN -->
+    <div class="section">
+        <h3>👤 Información Ambiental</h3>
+        <div class="card">
+            <p><strong>📍 Ciudad:</strong> Cusco, Perú</p>
+            <p><strong>📅 Miembro desde:</strong> 2026</p>
+            <p><strong>🚨 Reportes totales:</strong> 18</p>
+            <p><strong>🌱 Acciones ecológicas:</strong> 12</p>
+        </div>
+    </div>
+
+    <!-- REPORTES -->
+    <div class="section">
+        <h3>🚨 Reportes de Contaminación</h3>
+        <ul>
+            <li>🗑️ Acumulación de basura - Av. Cultura</li>
+            <li>💨 Humo excesivo de vehículos - Centro Histórico</li>
+            <li>🏭 Contaminación sonora - Mercado Central</li>
+            <li>🌊 Vertimiento de residuos - Río Huatanay</li>
+        </ul>
+    </div>
+
+    <!-- ACCIONES -->
+    <div class="section">
+        <h3>🌱 Acciones Realizadas</h3>
+        <ul>
+            <li>♻️ Participó en jornada de reciclaje</li>
+            <li>🌳 Plantación de árboles</li>
+            <li>📢 Campaña de concientización ambiental</li>
+            <li>🚲 Uso frecuente de transporte ecológico</li>
+        </ul>
+    </div>
+
+    <!-- LOGROS -->
+    <div class="section">
+        <h3>🏆 Logros Ambientales</h3>
+        <ul>
+            <li>🥇 Defensor del Aire Limpio</li>
+            <li>🌊 Protector del Agua</li>
+            <li>♻️ Maestro del Reciclaje</li>
+            <li>🌳 Guardián Verde</li>
+        </ul>
+
+        <div class="nivel">
+            <p><strong>Nivel Ambiental:</strong> 75%</p>
+            <div class="barra">
+                <div class="progreso"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
